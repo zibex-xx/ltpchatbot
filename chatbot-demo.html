@@ -465,7 +465,7 @@
                 <div class="ltp-message ltp-bot-message">
                     Cześć! Jestem chatbotem LOVE THE POLICE 🐕<br>
                     Zapytaj mnie o nasze produkty, promocje lub cokolwiek o naszej marce!<br>
-                    <strong>Wskazówka:</strong> Zapytaj o kod rabatowy 😉
+                    <strong>Pro tip:</strong> Napisz "promocje" żeby dostać kod rabatowy 😉
                 </div>
             </div>
             <div id="ltp-chatbot-input-area">
@@ -627,35 +627,43 @@
             getSmartResponse(message) {
                 const msg = message.toLowerCase();
 
-                // Sprawdź pytania o kody rabatowe
+                // Sprawdź pytania o kody rabatowe i promocje
                 if (msg.includes('kod') || msg.includes('rabat') || msg.includes('zniżka') || 
-                    msg.includes('promocja') || msg.includes('kupon')) {
-                    return `🎁 **Mam dla Ciebie kod rabatowy!**\n\nUżyj kodu: **CHATBOT** podczas zakupu i otrzymasz **15% zniżki** na wszystkie produkty.\n\nKod jest ważny na całą kolekcję - hoodie, t-shirty i plecaki. Nie przegap okazji! 😎`;
+                    msg.includes('promocja') || msg.includes('promocje') || msg.includes('kupon') ||
+                    msg.includes('zniż') || msg.includes('ofer') || msg.includes('taniej')) {
+                    return `🎁 **Hej! Mam coś fajnego dla Ciebie!**\n\nUżyj kodu: **CHATBOT** podczas zakupu i zaoszczędzisz **15% na wszystkim**! 💰\n\nKod działa na całą kolekcję - hoodie, t-shirty, plecaki. Sprawdź, jak dużo oszczędzisz! 😎\n\n*Tip: Kod jest zawsze aktualny, więc możesz go używać kiedy chcesz.*`;
                 }
 
                 // Produkty
-                if (msg.includes('produkt') || msg.includes('hoodie') || msg.includes('t-shirt') || msg.includes('bluza')) {
-                    return `🛍️ **Nasze produkty:**\n\n**HOODIE** (${brandKnowledge.products.hoodie}):\n• BRAND LOGO BLACK\n• BURNING CAR BLACK/WHITE\n• COLOR BLACK/WHITE\n\n**T-SHIRTY** (${brandKnowledge.products.t_shirt}):\n• Białe i czarne\n• Krój UNISEX OVERSIZE\n\n**PLECAKI** (${brandKnowledge.products.bag}):\n• BURNING CAR BLACK\n• STOP ABUSE\n\nWszystko wykonane metodą haftu! 🔥`;
+                if (msg.includes('produkt') || msg.includes('hoodie') || msg.includes('t-shirt') || 
+                    msg.includes('bluza') || msg.includes('koszul') || msg.includes('plecak') ||
+                    msg.includes('ciuch') || msg.includes('ubran') || msg.includes('co macie')) {
+                    return `🛍️ **Sprawdź nasze ciuchy:**\n\n**HOODIE** (${brandKnowledge.products.hoodie}) - to nasze kultowe:\n• BRAND LOGO BLACK - klasyk 🔥\n• BURNING CAR BLACK/WHITE - nasz bestseller\n• COLOR BLACK/WHITE - minimalistyczny vibe\n\n**T-SHIRTY** (${brandKnowledge.products.t_shirt}):\n• Krój UNISEX OVERSIZE\n• Białe i czarne warianty\n\n**PLECAKI** (${brandKnowledge.products.bag}):\n• BURNING CAR BLACK\n• STOP ABUSE\n\nWszystko robione haftem, jakość jak diabli! 🪄`;
                 }
 
                 // Ceny
-                if (msg.includes('cena') || msg.includes('koszt') || msg.includes('ile')) {
-                    return `💰 **Aktualny cennik:**\n\n🅰️ **HOODIE**: ${brandKnowledge.products.hoodie}\n👕 **T-SHIRT**: ${brandKnowledge.products.t_shirt}\n🎒 **PLECAK**: ${brandKnowledge.products.bag}\n\n📦 **Dostawa**: ${brandKnowledge.shipping.cost}\n⏱️ **Czas dostawy**: ${brandKnowledge.shipping.time}\n\nPamiętaj o kodzie **CHATBOT** na 15% zniżki! 😉`;
+                if (msg.includes('cena') || msg.includes('koszt') || msg.includes('ile') ||
+                    msg.includes('płać') || msg.includes('drogo') || msg.includes('tanio')) {
+                    return `💰 **Aktualny cennik na dziś:**\n\n🔥 **HOODIE**: ${brandKnowledge.products.hoodie}\n👕 **T-SHIRT**: ${brandKnowledge.products.t_shirt}\n🎒 **PLECAK**: ${brandKnowledge.products.bag}\n\n📦 **Dostawa**: ${brandKnowledge.shipping.cost} (krajowa)\n⏱️ **Czas dostawy**: ${brandKnowledge.shipping.time}\n\n💡 **Pro tip**: Użyj kodu **CHATBOT** i oszczędź 15%! To już nie jest drogo, a wręcz okazja 😏`;
                 }
 
                 // Rozmiary
-                if (msg.includes('rozmiar') || msg.includes('size') || msg.includes('wymiar')) {
-                    return `📏 **Tabela rozmiarów** (długość/szerokość cm):\n\n**HOODIE**: ${brandKnowledge.sizes.hoodie}\n**T-SHIRT**: ${brandKnowledge.sizes.tshirt}\n\nWszystkie ubrania mają krój **LOOSE/OVERSIZE FIT** 🔥\n\nPełna tabela rozmiarów: lovethepolice.pl/size-chart`;
+                if (msg.includes('rozmiar') || msg.includes('size') || msg.includes('wymiar') ||
+                    msg.includes('jaki wybrać') || msg.includes('który size')) {
+                    return `📏 **Tabela rozmiarów** (długość/szerokość cm):\n\n**HOODIE**: ${brandKnowledge.sizes.hoodie}\n**T-SHIRT**: ${brandKnowledge.sizes.tshirt}\n\nWszystkie ubrania mają krój **LOOSE/OVERSIZE FIT** 🔥\n\n💡 **Rada**: Jeśli lubisz bardziej fitted look, weź size mniejszy. Jak chcesz maxi oversize, weź większy!\n\nPełna tabela rozmiarów: lovethepolice.pl/size-chart`;
                 }
 
                 // Pielęgnacja
-                if (msg.includes('prać') || msg.includes('pielęgn') || msg.includes('dbać') || msg.includes('pranie')) {
-                    return `🧺 **Jak dbać o nasze ciuchy:**\n\n${brandKnowledge.care}\n\n**Dlaczego to ważne?** Nasze hafty są robione z miłością, więc tratuj je z szacunkiem! Dzięki temu Twoje LOVE THE POLICE będzie wyglądać świeżo przez lata 🐕`;
+                if (msg.includes('prać') || msg.includes('pielęgn') || msg.includes('dbać') || 
+                    msg.includes('pranie') || msg.includes('myć') || msg.includes('czyszczenie')) {
+                    return `🧺 **Jak dbać o nasze ciuchy:**\n\n${brandKnowledge.care}\n\n**Dlaczego to ważne?** Nasze hafty są robione z miłością i precyzją, więc traktuj je z szacunkiem! 💪\n\nDzięki temu Twoje LOVE THE POLICE będzie wyglądać świeżo przez lata. To inwestycja, nie wydatek! 🐕`;
                 }
 
                 // O marce
-                if (msg.includes('marka') || msg.includes('historia') || msg.includes('kim') || msg.includes('opowiedz')) {
-                    return `🐕 **LOVE THE POLICE** to nie tylko marka - to **manifest!**\n\n${brandKnowledge.brand.description}\n\nNasza maskotka to **${brandKnowledge.brand.mascot}**\n\nJesteśmy tu od 2020 roku, robimy limitowane dropy i walczymy z systemem przez streetwear. Bez kitu, z ironią, ale z przesłaniem! ✊`;
+                if (msg.includes('marka') || msg.includes('historia') || msg.includes('kim') || 
+                    msg.includes('opowiedz') || msg.includes('skąd') || msg.includes('powstała') ||
+                    msg.includes('założy') || msg.includes('dlaczego')) {
+                    return `🐕 **LOVE THE POLICE** to nie tylko marka - to **manifest rebeli!**\n\n${brandKnowledge.brand.description}\n\nNasza maskotka to **${brandKnowledge.brand.mascot}**\n\nJesteśmy tu od 2020 roku, robimy limitowane dropy i walczymy z systemem przez streetwear. Bez kitu, z ironią, ale z przesłaniem! ✊\n\n*Każdy kawałek to nie tylko ubranie - to statement.*`;
                 }
 
                 // Dostawa
@@ -669,15 +677,17 @@
                 }
 
                 // Pytania ogólne lub powitanie
-                if (msg.includes('cześć') || msg.includes('hej') || msg.includes('witaj') || msg.includes('dzień dobry')) {
-                    return `Yo! 🐕 Co tam?\n\nJestem chatbotem LOVE THE POLICE i znam wszystko o naszej marce. Możesz mnie pytać o:\n\n• 🛍️ Produkty i ceny\n• 🎁 Kody rabatowe (mam coś dla Ciebie!)\n• 📦 Dostawę i zwroty\n• 📏 Rozmiary\n• 🧺 Pielęgnację ubrań\n• 📚 Historię marki\n\nStrzelaj z pytaniami! 💥`;
+                if (msg.includes('cześć') || msg.includes('hej') || msg.includes('witaj') || 
+                    msg.includes('dzień dobry') || msg.includes('siema') || msg.includes('yo') ||
+                    msg.includes('pomocy') || msg.includes('pomoc') || msg.includes('help')) {
+                    return `Yo! 🐕 Co słychać?\n\nJestem chatbotem LOVE THE POLICE i znam dosłownie wszystko o naszej marce. Mogę Ci pomóc z:\n\n• 🛍️ **Produkty i ceny** - zobacz co mamy nowego\n• 🎁 **Kody rabatowe** - mam coś ekstra dla Ciebie!\n• 📦 **Dostawa i zwroty** - wszystkie praktyczne info\n• 📏 **Rozmiary** - żeby idealne leżało\n• 🧺 **Pielęgnacja** - jak dbać o nasze ciuchy\n• 📚 **Historia marki** - poznaj naszą historię\n\nStrzelaj z pytaniami, jestem tutaj! 💪`;
                 }
 
                 // Odpowiedź domyślna
                 const defaultResponses = [
-                    `Hmm, nie jestem pewien jak odpowiedzieć na to pytanie 🤔\n\nMożesz spytać mnie o produkty, ceny, dostawę, rozmiary albo historię marki. A może chcesz kod rabatowy? 😉`,
-                    `Ej, możesz być bardziej konkretny? 🐕\n\nJestem ekspertem od LOVE THE POLICE - pytaj o nasze hoodie, t-shirty, plecaki, promocje, czy cokolwiek związanego z marką!`,
-                    `Nie zrozumiałem do końca... 🤷‍♂️\n\nSpróbuj zapytać o:\n• Produkty i ceny\n• Kody rabatowe\n• Dostawa\n• Rozmiary\n• O marce\n\nAlbo po prostu napisz "pomoc" 😎`
+                    `Hmm, nie jestem pewien jak odpowiedzieć na to pytanie 🤔\n\nSpróbuj zapytać o produkty, ceny, dostawę, rozmiary albo historię marki. A może chcesz kod rabatowy? Napisz "rabat" a zobaczysz co mam! 😉`,
+                    `Ej, nie ogarniam o czym mówisz 🐕\n\nJestem ekspertem od LOVE THE POLICE - pytaj konkretnie o nasze hoodie, t-shirty, plecaki, promocje, czy cokolwiek związanego z marką!\n\nAlbo po prostu napisz "pomoc" i pokażę Ci co umiem 💪`,
+                    `Nie załapałem... 🤷‍♂️\n\nNapisz np:\n• "produkty" - zobaczysz co mamy\n• "ceny" - sprawdzisz ile kosztuje\n• "promocje" - dostaniesz kod rabatowy\n• "rozmiary" - sprawdzisz jaki wybrać\n• "o marce" - poznasz naszą historię\n\nJakie z tych Cię interesuje? 😎`
                 ];
 
                 return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
